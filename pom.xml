@@ -41,17 +41,13 @@
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-vertx-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.quarkus</groupId>
             <artifactId>quarkus-resteasy-jackson</artifactId>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.jboss/jboss-vfs -->
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
         <dependency>
-            <groupId>org.jboss</groupId>
-            <artifactId>jboss-vfs</artifactId>
-            <version>3.2.15.Final</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>5.2.3.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.mybatis</groupId>

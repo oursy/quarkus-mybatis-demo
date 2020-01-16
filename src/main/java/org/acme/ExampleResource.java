@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -36,6 +37,18 @@ public class ExampleResource {
             PersonMapper personMapper = sqlSession.getMapper(PersonMapper.class);
             return Response.ok(personMapper.findAll())
                     .build();
+        }
+    }
+
+    @GET
+    @Path("persons/{id}")
+    public Response personById(@PathParam(value = "id") Long id) {
+        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+            PersonMapper personMapper = sqlSession.getMapper(PersonMapper.class);
+            return personMapper.selectByTop1(id)
+                    .map(
+                            p -> Response.ok(p).build()
+                    ).orElse(Response.status(Response.Status.NOT_FOUND).build());
         }
     }
 }
